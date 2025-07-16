@@ -1,19 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  /* customize tokens—for neo‑brutalism feel */
-  --font‑display: "Inter", "sans‑serif";
-  --color‑accent: oklch(0.9 0.1 100); /* neon ff‑style accent */
-  --breakpoint‑lg: 1024px;
+  /* Design Tokens */
+  --font-display: "Inter", sans-serif;
+  --color-accent: oklch(0.8 0.15 100);
+  --border-radius: 12px;
+}
+
+/* Light Mode */
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --accent: var(--color-accent);
+}
+
+/* Dark Mode */
+.dark {
+  --bg: #0f0f0f;
+  --text: #f0f0f0;
+  --accent: oklch(0.7 0.2 260);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition */
 }
 
 @layer components {
   .btn {
-    @apply px‑4 py‑2 font‑medium rounded‑md border‑2;
-    border‑color: var(--color‑accent);
-    background‑color: color‑mix(in srgb, var(--color‑accent) 20%, white);
+    @apply px-4 py-2 border-2 font-semibold transition;
+    border-radius: var(--border-radius);
+    background-color: color-mix(in srgb, var(--accent) 20%, white);
+    border-color: var(--accent);
+    color: var(--text);
   }
-  .btn‑primary {
-    @apply bg‑accent‑500 text‑white hover:bg‑accent‑600;
+
+  .btn:hover {
+    background-color: var(--accent);
+    color: white;
   }
 }
