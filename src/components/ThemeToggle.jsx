@@ -1,15 +1,16 @@
-import { useContext } from "react";
-import { ThemeContext } from "../contexts/ThemeContext";
-import Button from "./ui/Button";
+import { useContext } from "react"; // Import React hook to access context
+import { ThemeContext } from "../contexts/ThemeContext"; // Import the context we created
+import Button from "./ui/Button"; // Use the reusable Button component
 
-// A toggle button to switch between light and dark modes
+// This component displays a button to toggle between light and dark modes
 export default function ThemeToggle() {
-  const { dark, toggleTheme } = useContext(ThemeContext); // Get theme state and toggle function
+  // Use useContext to get the current theme and toggle function from context
+  const { dark, toggleTheme } = useContext(ThemeContext);
 
   return (
     <Button onClick={toggleTheme} variant="outline">
-      {dark ? "☀ Light" : "🌙 Dark"}{" "}
-      {/* Change label/icon based on current theme */}
+      {/* Show different icons/text depending on current theme */}
+      {dark ? "☀ Light" : "🌙 Dark"}
     </Button>
   );
 }

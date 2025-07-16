@@ -1,24 +1,25 @@
-import { cn } from "../../utils/cn"; // Utility to merge classNames
+import { cn } from "../../utils/cn"; // Import a utility function to merge class names
 
-// Button component with support for variants and additional props
+// Reusable button component that can adapt styles and props
 export default function Button({
-  children, // Content inside the button
-  variant = "default", // Style variant (default, accent, outline)
-  className = "", // Extra Tailwind classes if needed
-  ...props // Remaining props like onClick, type, etc.
+  children, // Text or elements inside the button
+  variant = "default", // Define visual style: default, accent, outline
+  className = "", // Allow additional custom styling
+  ...props // Collect and forward other props like onClick, type etc.
 }) {
   return (
     <button
+      // Merge and apply Tailwind styles depending on chosen variant
       className={cn(
-        "btn", // Base button styles from Tailwind layer
+        "btn", // Base button style defined in Tailwind layers
         variant === "accent" &&
-          "bg-[var(--accent)] text-white hover:brightness-110",
-        variant === "outline" && "bg-transparent hover:bg-[var(--accent)]",
-        className // Allow further customization if passed
+          "bg-[var(--accent)] text-white hover:brightness-110", // Bright button
+        variant === "outline" && "bg-transparent hover:bg-[var(--accent)]", // Transparent border style
+        className // Add custom styles if any
       )}
-      {...props} // Spread any additional props like onClick
+      {...props} // Apply extra properties like onClick, type, etc.
     >
-      {children}
+      {children} {/* Display button content (text or icon) */}
     </button>
   );
 }
