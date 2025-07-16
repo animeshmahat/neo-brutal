@@ -8,6 +8,7 @@ export default function Layout({ children }) {
         <nav className="space-x-4 font-bold text-lg underline-offset-2">
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
         <ThemeToggle />
       </header>
